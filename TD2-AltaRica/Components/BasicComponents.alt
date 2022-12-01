@@ -1,0 +1,33 @@
+
+/* Basic classes for non repairable and repairable components */
+
+class NonRepairableComponent
+  Boolean vsWorking (init = true);
+  event evFailure (delay = exponential(pLambda));
+  parameter Real pLambda = 1.0e-5;
+
+  transition
+    evFailure: vsWorking -> vsWorking := false;
+end
+
+class RepairableComponent
+	extends NonRepairableComponent;
+	event evRepair (delay = exponential(pMeu));
+	parameter Real pMeu = 0.025;
+	transition 
+		evRepair: not vsWorking -> vsWorking := true;
+end
+
+class NonRepairableInOutComponent
+	extends NonRepairableComponent;
+	Boolean vfInput, vfOutput (reset = false);
+	assertion
+		vfOutput := if vsWorking then vfInput else false;
+end
+
+class RepairableInOutComponent
+	extends RepairableComponent;
+	Boolean vfInput, vfOutput (reset = false);
+	assertion
+		vfOutput := if vsWorking then vfInput else false;
+end
