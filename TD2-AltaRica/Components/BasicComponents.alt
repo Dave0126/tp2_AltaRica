@@ -10,7 +10,7 @@ class NonRepairableComponent
     evFailure: vsWorking -> vsWorking := false;
 end
 
-class RepairableComponent
+class Repairablbatteries_faileComponent
 	extends NonRepairableComponent;
 	event evRepair (delay = exponential(pMeu));
 	parameter Real pMeu = 0.025;

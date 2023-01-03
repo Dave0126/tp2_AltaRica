@@ -15,14 +15,14 @@ block System
 
 	// Phases modeling
 	block PhaseController
-		Integer vsPhase (init = 4);
+		Integer vsPhase (init = 3);
 	end
 
 	// Subsystem used during the 1st phase
 	block Phase1
 		embeds main.GS1 as GS1;
 		embeds main.Sat as Sat;
-		// ...
+		// ...batteries_fail
 		Boolean vfWorking ( reset = false );
 		assertion
 		//...

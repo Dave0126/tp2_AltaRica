@@ -1,0 +1,1202 @@
+<?xml version="1.0"?>
+<!DOCTYPE open-psa>
+<open-psa >
+  <define-gate name="GS1.Antenna.vfInput_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS1.Antenna.vfOutput_false" >
+    <and >
+      <gate name="GS1.Antenna.vfInput_true" />
+      <gate name="GS1.Antenna.vsWorking_false" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Antenna.vfOutput_true" >
+    <and >
+      <gate name="GS1.Antenna.vfInput_true" />
+      <gate name="GS1.Antenna.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Antenna.vsWorking_false" >
+    <and >
+      <basic-event name="GS1.Antenna.evFailure" />
+      <not >
+        <basic-event name="GS1.Antenna.evRepair" />
+      </not>
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Antenna.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS1.Receiver1.vfInput_false" >
+    <and >
+      <gate name="GS1.Transmitter1.vfOutput_false" />
+      <gate name="GS1.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Receiver1.vfInput_true" >
+    <or >
+      <gate name="GS1.Transmitter1.vfOutput_true" />
+      <gate name="GS1.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="GS1.Receiver1.vfOutput_false" >
+    <or >
+      <gate name="GS1.Receiver1.vfInput_false" />
+      <gate name="GS1.Receiver1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="GS1.Receiver1.vfOutput_true" >
+    <and >
+      <gate name="GS1.Receiver1.vfInput_true" />
+      <gate name="GS1.Receiver1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Receiver1.vsWorking_false" >
+    <basic-event name="GS1.Receiver1.evFailure" />
+  </define-gate>
+  <define-gate name="GS1.Receiver1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS1.Receiver2.vfInput_false" >
+    <and >
+      <gate name="GS1.Transmitter1.vfOutput_false" />
+      <gate name="GS1.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Receiver2.vfInput_true" >
+    <or >
+      <gate name="GS1.Transmitter1.vfOutput_true" />
+      <gate name="GS1.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="GS1.Receiver2.vfOutput_false" >
+    <or >
+      <gate name="GS1.Receiver2.vfInput_false" />
+      <gate name="GS1.Receiver2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="GS1.Receiver2.vfOutput_true" >
+    <and >
+      <gate name="GS1.Receiver2.vfInput_true" />
+      <gate name="GS1.Receiver2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Receiver2.vsWorking_false" >
+    <basic-event name="GS1.Receiver2.evFailure" />
+  </define-gate>
+  <define-gate name="GS1.Receiver2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS1.Transmitter1.vfInput_false" >
+    <gate name="GS1.Antenna.vfOutput_false" />
+  </define-gate>
+  <define-gate name="GS1.Transmitter1.vfInput_true" >
+    <gate name="GS1.Antenna.vfOutput_true" />
+  </define-gate>
+  <define-gate name="GS1.Transmitter1.vfOutput_false" >
+    <or >
+      <gate name="GS1.Transmitter1.vfInput_false" />
+      <gate name="GS1.Transmitter1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="GS1.Transmitter1.vfOutput_true" >
+    <and >
+      <gate name="GS1.Transmitter1.vfInput_true" />
+      <gate name="GS1.Transmitter1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Transmitter1.vsWorking_false" >
+    <basic-event name="GS1.Transmitter1.evFailure" />
+  </define-gate>
+  <define-gate name="GS1.Transmitter1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS1.Transmitter2.vfInput_false" >
+    <gate name="GS1.Antenna.vfOutput_false" />
+  </define-gate>
+  <define-gate name="GS1.Transmitter2.vfInput_true" >
+    <gate name="GS1.Antenna.vfOutput_true" />
+  </define-gate>
+  <define-gate name="GS1.Transmitter2.vfOutput_false" >
+    <or >
+      <gate name="GS1.Transmitter2.vfInput_false" />
+      <gate name="GS1.Transmitter2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="GS1.Transmitter2.vfOutput_true" >
+    <and >
+      <gate name="GS1.Transmitter2.vfInput_true" />
+      <gate name="GS1.Transmitter2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.Transmitter2.vsWorking_false" >
+    <basic-event name="GS1.Transmitter2.evFailure" />
+  </define-gate>
+  <define-gate name="GS1.Transmitter2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS1.vfOutput_false" >
+    <and >
+      <gate name="GS1.Receiver1.vfOutput_false" />
+      <gate name="GS1.Receiver2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="GS1.vfOutput_true" >
+    <or >
+      <gate name="GS1.Receiver1.vfOutput_true" />
+      <gate name="GS1.Receiver2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="GS2.Antenna.vfInput_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS2.Antenna.vfOutput_false" >
+    <and >
+      <gate name="GS2.Antenna.vfInput_true" />
+      <gate name="GS2.Antenna.vsWorking_false" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Antenna.vfOutput_true" >
+    <and >
+      <gate name="GS2.Antenna.vfInput_true" />
+      <gate name="GS2.Antenna.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Antenna.vsWorking_false" >
+    <and >
+      <basic-event name="GS2.Antenna.evFailure" />
+      <not >
+        <basic-event name="GS2.Antenna.evRepair" />
+      </not>
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Antenna.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS2.Receiver1.vfInput_false" >
+    <and >
+      <gate name="GS2.Transmitter1.vfOutput_false" />
+      <gate name="GS2.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Receiver1.vfInput_true" >
+    <or >
+      <gate name="GS2.Transmitter1.vfOutput_true" />
+      <gate name="GS2.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="GS2.Receiver1.vfOutput_false" >
+    <or >
+      <gate name="GS2.Receiver1.vfInput_false" />
+      <gate name="GS2.Receiver1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="GS2.Receiver1.vfOutput_true" >
+    <and >
+      <gate name="GS2.Receiver1.vfInput_true" />
+      <gate name="GS2.Receiver1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Receiver1.vsWorking_false" >
+    <basic-event name="GS2.Receiver1.evFailure" />
+  </define-gate>
+  <define-gate name="GS2.Receiver1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS2.Receiver2.vfInput_false" >
+    <and >
+      <gate name="GS2.Transmitter1.vfOutput_false" />
+      <gate name="GS2.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Receiver2.vfInput_true" >
+    <or >
+      <gate name="GS2.Transmitter1.vfOutput_true" />
+      <gate name="GS2.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="GS2.Receiver2.vfOutput_false" >
+    <or >
+      <gate name="GS2.Receiver2.vfInput_false" />
+      <gate name="GS2.Receiver2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="GS2.Receiver2.vfOutput_true" >
+    <and >
+      <gate name="GS2.Receiver2.vfInput_true" />
+      <gate name="GS2.Receiver2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Receiver2.vsWorking_false" >
+    <basic-event name="GS2.Receiver2.evFailure" />
+  </define-gate>
+  <define-gate name="GS2.Receiver2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS2.Transmitter1.vfInput_false" >
+    <gate name="GS2.Antenna.vfOutput_false" />
+  </define-gate>
+  <define-gate name="GS2.Transmitter1.vfInput_true" >
+    <gate name="GS2.Antenna.vfOutput_true" />
+  </define-gate>
+  <define-gate name="GS2.Transmitter1.vfOutput_false" >
+    <or >
+      <gate name="GS2.Transmitter1.vfInput_false" />
+      <gate name="GS2.Transmitter1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="GS2.Transmitter1.vfOutput_true" >
+    <and >
+      <gate name="GS2.Transmitter1.vfInput_true" />
+      <gate name="GS2.Transmitter1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Transmitter1.vsWorking_false" >
+    <basic-event name="GS2.Transmitter1.evFailure" />
+  </define-gate>
+  <define-gate name="GS2.Transmitter1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS2.Transmitter2.vfInput_false" >
+    <gate name="GS2.Antenna.vfOutput_false" />
+  </define-gate>
+  <define-gate name="GS2.Transmitter2.vfInput_true" >
+    <gate name="GS2.Antenna.vfOutput_true" />
+  </define-gate>
+  <define-gate name="GS2.Transmitter2.vfOutput_false" >
+    <or >
+      <gate name="GS2.Transmitter2.vfInput_false" />
+      <gate name="GS2.Transmitter2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="GS2.Transmitter2.vfOutput_true" >
+    <and >
+      <gate name="GS2.Transmitter2.vfInput_true" />
+      <gate name="GS2.Transmitter2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.Transmitter2.vsWorking_false" >
+    <basic-event name="GS2.Transmitter2.evFailure" />
+  </define-gate>
+  <define-gate name="GS2.Transmitter2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="GS2.vfOutput_false" >
+    <and >
+      <gate name="GS2.Receiver1.vfOutput_false" />
+      <gate name="GS2.Receiver2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="GS2.vfOutput_true" >
+    <or >
+      <gate name="GS2.Receiver1.vfOutput_true" />
+      <gate name="GS2.Receiver2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="Phase1.vfWorking_false" >
+    <or >
+      <gate name="GS1.vfOutput_false" />
+      <gate name="Sat.vfOutput_false" />
+    </or>
+  </define-gate>
+  <define-gate name="Phase1.vfWorking_true" >
+    <and >
+      <gate name="GS1.vfOutput_true" />
+      <gate name="Sat.vfOutput_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Gate37" >
+    <and >
+      <gate name="GS1.vfOutput_false" />
+      <gate name="GS2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Phase2.vfWorking_false" >
+    <or >
+      <gate name="Gate37" />
+      <gate name="Sat.vfOutput_false" />
+    </or>
+  </define-gate>
+  <define-gate name="Gate40" >
+    <and >
+      <gate name="GS1.vfOutput_true" />
+      <gate name="Sat.vfOutput_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Gate39" >
+    <and >
+      <gate name="Sat.vfOutput_true" />
+      <gate name="GS2.vfOutput_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Phase2.vfWorking_true" >
+    <or >
+      <gate name="Gate40" />
+      <gate name="Gate39" />
+    </or>
+  </define-gate>
+  <define-gate name="Phase3.vfWorking_false" >
+    <or >
+      <gate name="Sat.vfOutput_false" />
+      <gate name="GS2.vfOutput_false" />
+    </or>
+  </define-gate>
+  <define-gate name="Phase3.vfWorking_true" >
+    <and >
+      <gate name="Sat.vfOutput_true" />
+      <gate name="GS2.vfOutput_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Gate46" >
+    <and >
+      <gate name="GS1.vfOutput_false" />
+      <gate name="GS2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Gate44" >
+    <and >
+      <gate name="SatRelay1.vfOutput_false" />
+      <gate name="SatRelay2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Phase4.vfWorking_false" >
+    <or >
+      <gate name="Gate46" />
+      <gate name="Sat.vfOutput_false" />
+      <gate name="Gate44" />
+    </or>
+  </define-gate>
+  <define-gate name="Gate48" >
+    <or >
+      <gate name="SatRelay1.vfOutput_true" />
+      <gate name="SatRelay2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="Gate52" >
+    <and >
+      <gate name="GS1.vfOutput_true" />
+      <gate name="Sat.vfOutput_true" />
+      <gate name="Gate48" />
+    </and>
+  </define-gate>
+  <define-gate name="Gate51" >
+    <and >
+      <gate name="Sat.vfOutput_true" />
+      <gate name="GS2.vfOutput_true" />
+      <gate name="Gate48" />
+    </and>
+  </define-gate>
+  <define-gate name="Phase4.vfWorking_true" >
+    <or >
+      <gate name="Gate52" />
+      <gate name="Gate51" />
+    </or>
+  </define-gate>
+  <define-gate name="PhaseController.vsPhase_3" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.Battery1.vfInput_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.Battery1.vfOutput_false" >
+    <and >
+      <gate name="Sat.Battery1.vfInput_true" />
+      <gate name="Sat.Battery1.vsWorking_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Battery1.vfOutput_true" >
+    <and >
+      <gate name="Sat.Battery1.vfInput_true" />
+      <gate name="Sat.Battery1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Battery1.vsWorking_false" >
+    <basic-event name="Sat.Battery1.evFailure" />
+  </define-gate>
+  <define-gate name="Sat.Battery1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.Battery2.vfInput_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.Battery2.vfOutput_false" >
+    <and >
+      <gate name="Sat.Battery2.vfInput_true" />
+      <gate name="Sat.Battery2.vsWorking_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Battery2.vfOutput_true" >
+    <and >
+      <gate name="Sat.Battery2.vfInput_true" />
+      <gate name="Sat.Battery2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Battery2.vsWorking_false" >
+    <basic-event name="Sat.Battery2.evFailure" />
+  </define-gate>
+  <define-gate name="Sat.Battery2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.Receiver1.vfInput_false" >
+    <and >
+      <gate name="Sat.Transmitter1.vfOutput_false" />
+      <gate name="Sat.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Receiver1.vfInput_true" >
+    <or >
+      <gate name="Sat.Transmitter1.vfOutput_true" />
+      <gate name="Sat.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="Sat.Receiver1.vfOutput_false" >
+    <or >
+      <gate name="Sat.Receiver1.vfInput_false" />
+      <gate name="Sat.Receiver1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="Sat.Receiver1.vfOutput_true" >
+    <and >
+      <gate name="Sat.Receiver1.vfInput_true" />
+      <gate name="Sat.Receiver1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Receiver1.vsWorking_false" >
+    <basic-event name="Sat.Receiver1.evFailure" />
+  </define-gate>
+  <define-gate name="Sat.Receiver1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.Receiver2.vfInput_false" >
+    <and >
+      <gate name="Sat.Transmitter1.vfOutput_false" />
+      <gate name="Sat.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Receiver2.vfInput_true" >
+    <or >
+      <gate name="Sat.Transmitter1.vfOutput_true" />
+      <gate name="Sat.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="Sat.Receiver2.vfOutput_false" >
+    <or >
+      <gate name="Sat.Receiver2.vfInput_false" />
+      <gate name="Sat.Receiver2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="Sat.Receiver2.vfOutput_true" >
+    <and >
+      <gate name="Sat.Receiver2.vfInput_true" />
+      <gate name="Sat.Receiver2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Receiver2.vsWorking_false" >
+    <basic-event name="Sat.Receiver2.evFailure" />
+  </define-gate>
+  <define-gate name="Sat.Receiver2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.Transmitter1.vfInput_false" >
+    <and >
+      <gate name="Sat.Battery1.vfOutput_false" />
+      <gate name="Sat.Battery2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Transmitter1.vfInput_true" >
+    <or >
+      <gate name="Sat.Battery1.vfOutput_true" />
+      <gate name="Sat.Battery2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="Sat.Transmitter1.vfOutput_false" >
+    <or >
+      <gate name="Sat.Transmitter1.vfInput_false" />
+      <gate name="Sat.Transmitter1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="Sat.Transmitter1.vfOutput_true" >
+    <and >
+      <gate name="Sat.Transmitter1.vfInput_true" />
+      <gate name="Sat.Transmitter1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Transmitter1.vsWorking_false" >
+    <basic-event name="Sat.Transmitter1.evFailure" />
+  </define-gate>
+  <define-gate name="Sat.Transmitter1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.Transmitter2.vfInput_false" >
+    <and >
+      <gate name="Sat.Battery1.vfOutput_false" />
+      <gate name="Sat.Battery2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Transmitter2.vfInput_true" >
+    <or >
+      <gate name="Sat.Battery1.vfOutput_true" />
+      <gate name="Sat.Battery2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="Sat.Transmitter2.vfOutput_false" >
+    <or >
+      <gate name="Sat.Transmitter2.vfInput_false" />
+      <gate name="Sat.Transmitter2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="Sat.Transmitter2.vfOutput_true" >
+    <and >
+      <gate name="Sat.Transmitter2.vfInput_true" />
+      <gate name="Sat.Transmitter2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.Transmitter2.vsWorking_false" >
+    <basic-event name="Sat.Transmitter2.evFailure" />
+  </define-gate>
+  <define-gate name="Sat.Transmitter2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="Sat.vfOutput_false" >
+    <and >
+      <gate name="Sat.Receiver1.vfOutput_false" />
+      <gate name="Sat.Receiver2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="Sat.vfOutput_true" >
+    <or >
+      <gate name="Sat.Receiver1.vfOutput_true" />
+      <gate name="Sat.Receiver2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Battery1.vfInput_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay1.Battery1.vfOutput_false" >
+    <and >
+      <gate name="SatRelay1.Battery1.vfInput_true" />
+      <gate name="SatRelay1.Battery1.vsWorking_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Battery1.vfOutput_true" >
+    <and >
+      <gate name="SatRelay1.Battery1.vfInput_true" />
+      <gate name="SatRelay1.Battery1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Battery1.vsWorking_false" >
+    <basic-event name="SatRelay1.Battery1.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay1.Battery1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay1.Battery2.vfInput_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay1.Battery2.vfOutput_false" >
+    <and >
+      <gate name="SatRelay1.Battery2.vfInput_true" />
+      <gate name="SatRelay1.Battery2.vsWorking_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Battery2.vfOutput_true" >
+    <and >
+      <gate name="SatRelay1.Battery2.vfInput_true" />
+      <gate name="SatRelay1.Battery2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Battery2.vsWorking_false" >
+    <basic-event name="SatRelay1.Battery2.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay1.Battery2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver1.vfInput_false" >
+    <and >
+      <gate name="SatRelay1.Transmitter1.vfOutput_false" />
+      <gate name="SatRelay1.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver1.vfInput_true" >
+    <or >
+      <gate name="SatRelay1.Transmitter1.vfOutput_true" />
+      <gate name="SatRelay1.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver1.vfOutput_false" >
+    <or >
+      <gate name="SatRelay1.Receiver1.vfInput_false" />
+      <gate name="SatRelay1.Receiver1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver1.vfOutput_true" >
+    <and >
+      <gate name="SatRelay1.Receiver1.vfInput_true" />
+      <gate name="SatRelay1.Receiver1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver1.vsWorking_false" >
+    <basic-event name="SatRelay1.Receiver1.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver2.vfInput_false" >
+    <and >
+      <gate name="SatRelay1.Transmitter1.vfOutput_false" />
+      <gate name="SatRelay1.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver2.vfInput_true" >
+    <or >
+      <gate name="SatRelay1.Transmitter1.vfOutput_true" />
+      <gate name="SatRelay1.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver2.vfOutput_false" >
+    <or >
+      <gate name="SatRelay1.Receiver2.vfInput_false" />
+      <gate name="SatRelay1.Receiver2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver2.vfOutput_true" >
+    <and >
+      <gate name="SatRelay1.Receiver2.vfInput_true" />
+      <gate name="SatRelay1.Receiver2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver2.vsWorking_false" >
+    <basic-event name="SatRelay1.Receiver2.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay1.Receiver2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter1.vfInput_false" >
+    <and >
+      <gate name="SatRelay1.Battery1.vfOutput_false" />
+      <gate name="SatRelay1.Battery2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter1.vfInput_true" >
+    <or >
+      <gate name="SatRelay1.Battery1.vfOutput_true" />
+      <gate name="SatRelay1.Battery2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter1.vfOutput_false" >
+    <or >
+      <gate name="SatRelay1.Transmitter1.vfInput_false" />
+      <gate name="SatRelay1.Transmitter1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter1.vfOutput_true" >
+    <and >
+      <gate name="SatRelay1.Transmitter1.vfInput_true" />
+      <gate name="SatRelay1.Transmitter1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter1.vsWorking_false" >
+    <basic-event name="SatRelay1.Transmitter1.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter2.vfInput_false" >
+    <and >
+      <gate name="SatRelay1.Battery1.vfOutput_false" />
+      <gate name="SatRelay1.Battery2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter2.vfInput_true" >
+    <or >
+      <gate name="SatRelay1.Battery1.vfOutput_true" />
+      <gate name="SatRelay1.Battery2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter2.vfOutput_false" >
+    <or >
+      <gate name="SatRelay1.Transmitter2.vfInput_false" />
+      <gate name="SatRelay1.Transmitter2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter2.vfOutput_true" >
+    <and >
+      <gate name="SatRelay1.Transmitter2.vfInput_true" />
+      <gate name="SatRelay1.Transmitter2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter2.vsWorking_false" >
+    <basic-event name="SatRelay1.Transmitter2.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay1.Transmitter2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay1.vfOutput_false" >
+    <and >
+      <gate name="SatRelay1.Receiver1.vfOutput_false" />
+      <gate name="SatRelay1.Receiver2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay1.vfOutput_true" >
+    <or >
+      <gate name="SatRelay1.Receiver1.vfOutput_true" />
+      <gate name="SatRelay1.Receiver2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Battery1.vfInput_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay2.Battery1.vfOutput_false" >
+    <and >
+      <gate name="SatRelay2.Battery1.vfInput_true" />
+      <gate name="SatRelay2.Battery1.vsWorking_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Battery1.vfOutput_true" >
+    <and >
+      <gate name="SatRelay2.Battery1.vfInput_true" />
+      <gate name="SatRelay2.Battery1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Battery1.vsWorking_false" >
+    <basic-event name="SatRelay2.Battery1.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay2.Battery1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay2.Battery2.vfInput_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay2.Battery2.vfOutput_false" >
+    <and >
+      <gate name="SatRelay2.Battery2.vfInput_true" />
+      <gate name="SatRelay2.Battery2.vsWorking_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Battery2.vfOutput_true" >
+    <and >
+      <gate name="SatRelay2.Battery2.vfInput_true" />
+      <gate name="SatRelay2.Battery2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Battery2.vsWorking_false" >
+    <basic-event name="SatRelay2.Battery2.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay2.Battery2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver1.vfInput_false" >
+    <and >
+      <gate name="SatRelay2.Transmitter1.vfOutput_false" />
+      <gate name="SatRelay2.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver1.vfInput_true" >
+    <or >
+      <gate name="SatRelay2.Transmitter1.vfOutput_true" />
+      <gate name="SatRelay2.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver1.vfOutput_false" >
+    <or >
+      <gate name="SatRelay2.Receiver1.vfInput_false" />
+      <gate name="SatRelay2.Receiver1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver1.vfOutput_true" >
+    <and >
+      <gate name="SatRelay2.Receiver1.vfInput_true" />
+      <gate name="SatRelay2.Receiver1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver1.vsWorking_false" >
+    <basic-event name="SatRelay2.Receiver1.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver2.vfInput_false" >
+    <and >
+      <gate name="SatRelay2.Transmitter1.vfOutput_false" />
+      <gate name="SatRelay2.Transmitter2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver2.vfInput_true" >
+    <or >
+      <gate name="SatRelay2.Transmitter1.vfOutput_true" />
+      <gate name="SatRelay2.Transmitter2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver2.vfOutput_false" >
+    <or >
+      <gate name="SatRelay2.Receiver2.vfInput_false" />
+      <gate name="SatRelay2.Receiver2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver2.vfOutput_true" >
+    <and >
+      <gate name="SatRelay2.Receiver2.vfInput_true" />
+      <gate name="SatRelay2.Receiver2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver2.vsWorking_false" >
+    <basic-event name="SatRelay2.Receiver2.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay2.Receiver2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter1.vfInput_false" >
+    <and >
+      <gate name="SatRelay2.Battery1.vfOutput_false" />
+      <gate name="SatRelay2.Battery2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter1.vfInput_true" >
+    <or >
+      <gate name="SatRelay2.Battery1.vfOutput_true" />
+      <gate name="SatRelay2.Battery2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter1.vfOutput_false" >
+    <or >
+      <gate name="SatRelay2.Transmitter1.vfInput_false" />
+      <gate name="SatRelay2.Transmitter1.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter1.vfOutput_true" >
+    <and >
+      <gate name="SatRelay2.Transmitter1.vfInput_true" />
+      <gate name="SatRelay2.Transmitter1.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter1.vsWorking_false" >
+    <basic-event name="SatRelay2.Transmitter1.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter1.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter2.vfInput_false" >
+    <and >
+      <gate name="SatRelay2.Battery1.vfOutput_false" />
+      <gate name="SatRelay2.Battery2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter2.vfInput_true" >
+    <or >
+      <gate name="SatRelay2.Battery1.vfOutput_true" />
+      <gate name="SatRelay2.Battery2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter2.vfOutput_false" >
+    <or >
+      <gate name="SatRelay2.Transmitter2.vfInput_false" />
+      <gate name="SatRelay2.Transmitter2.vsWorking_false" />
+    </or>
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter2.vfOutput_true" >
+    <and >
+      <gate name="SatRelay2.Transmitter2.vfInput_true" />
+      <gate name="SatRelay2.Transmitter2.vsWorking_true" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter2.vsWorking_false" >
+    <basic-event name="SatRelay2.Transmitter2.evFailure" />
+  </define-gate>
+  <define-gate name="SatRelay2.Transmitter2.vsWorking_true" >
+    <constant value="true" />
+  </define-gate>
+  <define-gate name="SatRelay2.vfOutput_false" >
+    <and >
+      <gate name="SatRelay2.Receiver1.vfOutput_false" />
+      <gate name="SatRelay2.Receiver2.vfOutput_false" />
+    </and>
+  </define-gate>
+  <define-gate name="SatRelay2.vfOutput_true" >
+    <or >
+      <gate name="SatRelay2.Receiver1.vfOutput_true" />
+      <gate name="SatRelay2.Receiver2.vfOutput_true" />
+    </or>
+  </define-gate>
+  <define-gate name="oFailed_false" >
+    <gate name="vfWorking_true" />
+  </define-gate>
+  <define-gate name="oFailed_true" >
+    <gate name="vfWorking_false" />
+  </define-gate>
+  <define-gate name="vfWorking_false" >
+    <gate name="Phase3.vfWorking_false" />
+  </define-gate>
+  <define-gate name="vfWorking_true" >
+    <gate name="Phase3.vfWorking_true" />
+  </define-gate>
+  <define-basic-event name="GS1.Antenna.evFailure" >
+    <exponential >
+      <parameter name="GS1.Antenna.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS1.Antenna.evRepair" >
+    <exponential >
+      <parameter name="GS1.Antenna.pMeu" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS1.Receiver1.evFailure" >
+    <exponential >
+      <parameter name="GS1.Receiver1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS1.Receiver2.evFailure" >
+    <exponential >
+      <parameter name="GS1.Receiver2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS1.Transmitter1.evFailure" >
+    <exponential >
+      <parameter name="GS1.Transmitter1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS1.Transmitter2.evFailure" >
+    <exponential >
+      <parameter name="GS1.Transmitter2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS2.Antenna.evFailure" >
+    <exponential >
+      <parameter name="GS2.Antenna.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS2.Antenna.evRepair" >
+    <exponential >
+      <parameter name="GS2.Antenna.pMeu" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS2.Receiver1.evFailure" >
+    <exponential >
+      <parameter name="GS2.Receiver1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS2.Receiver2.evFailure" >
+    <exponential >
+      <parameter name="GS2.Receiver2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS2.Transmitter1.evFailure" >
+    <exponential >
+      <parameter name="GS2.Transmitter1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="GS2.Transmitter2.evFailure" >
+    <exponential >
+      <parameter name="GS2.Transmitter2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="Sat.Battery1.evFailure" >
+    <exponential >
+      <parameter name="Sat.Battery1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="Sat.Battery2.evFailure" >
+    <exponential >
+      <parameter name="Sat.Battery2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="Sat.Receiver1.evFailure" >
+    <exponential >
+      <parameter name="Sat.Receiver1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="Sat.Receiver2.evFailure" >
+    <exponential >
+      <parameter name="Sat.Receiver2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="Sat.Transmitter1.evFailure" >
+    <exponential >
+      <parameter name="Sat.Transmitter1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="Sat.Transmitter2.evFailure" >
+    <exponential >
+      <parameter name="Sat.Transmitter2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay1.Battery1.evFailure" >
+    <exponential >
+      <parameter name="SatRelay1.Battery1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay1.Battery2.evFailure" >
+    <exponential >
+      <parameter name="SatRelay1.Battery2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay1.Receiver1.evFailure" >
+    <exponential >
+      <parameter name="SatRelay1.Receiver1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay1.Receiver2.evFailure" >
+    <exponential >
+      <parameter name="SatRelay1.Receiver2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay1.Transmitter1.evFailure" >
+    <exponential >
+      <parameter name="SatRelay1.Transmitter1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay1.Transmitter2.evFailure" >
+    <exponential >
+      <parameter name="SatRelay1.Transmitter2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay2.Battery1.evFailure" >
+    <exponential >
+      <parameter name="SatRelay2.Battery1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay2.Battery2.evFailure" >
+    <exponential >
+      <parameter name="SatRelay2.Battery2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay2.Receiver1.evFailure" >
+    <exponential >
+      <parameter name="SatRelay2.Receiver1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay2.Receiver2.evFailure" >
+    <exponential >
+      <parameter name="SatRelay2.Receiver2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay2.Transmitter1.evFailure" >
+    <exponential >
+      <parameter name="SatRelay2.Transmitter1.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-basic-event name="SatRelay2.Transmitter2.evFailure" >
+    <exponential >
+      <parameter name="SatRelay2.Transmitter2.pLambda" />
+      <mission-time />
+    </exponential>
+  </define-basic-event>
+  <define-parameter name="GS1.Antenna.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS1.Antenna.pMeu" >
+    <float value="0.025" />
+  </define-parameter>
+  <define-parameter name="GS1.Receiver1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS1.Receiver2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS1.Transmitter1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS1.Transmitter2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS2.Antenna.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS2.Antenna.pMeu" >
+    <float value="0.025" />
+  </define-parameter>
+  <define-parameter name="GS2.Receiver1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS2.Receiver2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS2.Transmitter1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="GS2.Transmitter2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="Sat.Battery1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="Sat.Battery2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="Sat.Receiver1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="Sat.Receiver2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="Sat.Transmitter1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="Sat.Transmitter2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay1.Battery1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay1.Battery2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay1.Receiver1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay1.Receiver2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay1.Transmitter1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay1.Transmitter2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay2.Battery1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay2.Battery2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay2.Receiver1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay2.Receiver2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay2.Transmitter1.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+  <define-parameter name="SatRelay2.Transmitter2.pLambda" >
+    <float value="1e-05" />
+  </define-parameter>
+</open-psa>

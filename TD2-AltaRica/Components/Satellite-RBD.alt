@@ -18,6 +18,7 @@ class SatelliteSubSystem
 	
 	Boolean vfOutput( reset = false );
 
+
 	// Connections
 	assertion
 		Battery1.vfInput := true;

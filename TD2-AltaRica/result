@@ -1,0 +1,7 @@
+1	Sat.batteries_fail
+1	GS2.Antenna.evFailure
+2	GS2.Transmitter1.evFailure	GS2.Transmitter2.evFailure
+2	GS2.Receiver1.evFailure	GS2.Receiver2.evFailure
+2	Sat.Battery1.evFailure	Sat.Battery2.evFailure
+2	Sat.Transmitter1.evFailure	Sat.Transmitter2.evFailure
+2	Sat.Receiver1.evFailure	Sat.Receiver2.evFailure

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<!DOCTYPE xfta>
+<xfta>
+ <load>
+  <model input="Exercise3/FaultTrees/ex3.opsa"/>
+ </load>
+ <build>
+  <minimal-cutsets top-event="oFailed_true" handle="MCS" mission-time="8760"/>
+ </build>
+ <print>
+  <minimal-cutsets top-event="oFailed_true" handle="MCS" output="Exercise3/FaultTrees/result.txt" mode="write" mission-time="8760">
+   <option value="off" name="print-minimal-cutset-rank"/>
+   <option value="on" name="print-minimal-cutset-order"/>
+   <option value="off" name="print-minimal-cutset-probability"/>
+   <option value="off" name="print-minimal-cutset-contribution"/>
+  </minimal-cutsets>
+ </print>
+</xfta>

@@ -1,12 +1,20 @@
 <!DOCTYPE AltaRicaWizard>
 <project name="Exercise3">
     <folder name="Components">
-        <file name="BasicComponents.alt" path="Components/BasicComponents.alt"/>
-        <file name="GroundStation-RBD.alt" path="Components/GroundStation-RBD.alt"/>
-        <file name="Satellite-RBD.alt" path="Components/Satellite-RBD.alt"/>
+        <file path="Components/BasicComponents.alt" name="BasicComponents.alt"/>
+        <file path="Components/GroundStation-RBD.alt" name="GroundStation-RBD.alt"/>
+        <file path="Components/Satellite-RBD.alt" name="Satellite-RBD.alt"/>
     </folder>
     <folder name="Exercise3">
-        <file name="System.alt" path="Exercise3/System.alt"/>
+        <folder name="FaultTrees">
+            <file path="Exercise3/FaultTrees/ex3.opsa" name="ex3.opsa"/>
+            <file path="Exercise3/FaultTrees/ex3_2.opsa" name="ex3_2.opsa"/>
+            <file path="Exercise3/FaultTrees/ex3_3.opsa" name="ex3_3.opsa"/>
+            <file path="Exercise3/FaultTrees/ex3_4.opsa" name="ex3_4.opsa"/>
+        </folder>
+        <file path="Exercise3/System.alt" name="System.alt"/>
     </folder>
-    <file name="Test.gts" path="Test.gts"/>
+    <file path="Exercise3.opsa" name="Exercise3.opsa"/>
+    <file path="System.gts" name="System.gts"/>
+    <file path="Test.gts" name="Test.gts"/>
 </project>

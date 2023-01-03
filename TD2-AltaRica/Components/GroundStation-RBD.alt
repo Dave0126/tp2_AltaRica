@@ -11,10 +11,10 @@ class GroundStationSubSystem
     // Components
 	// ...
 	RepairableInOutComponent Antenna;
-	NonRepairableInOutComponent Transmitter1;
-	NonRepairableInOutComponent Transmitter2;
-	NonRepairableInOutComponent Receiver1;
-	NonRepairableInOutComponent Receiver2;
+	RepairableInOutComponent Transmitter1;
+	RepairableInOutComponent Transmitter2;
+	RepairableInOutComponent Receiver1;
+	RepairableInOutComponent Receiver2;
 
 	Boolean vfOutput ( reset = false );
 
